@@ -9,7 +9,7 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "localhost:3000",
+    "host": "https://bsa-ghg.herokuapp.com/",
     "basePath": "/api/",
     "tags": [
       {
@@ -17,7 +17,7 @@
         "description": "API for countries in the system"
       }
     ],
-    "schemes": ["http"],
+    "schemes": ["https"],
     "consumes": ["application/json"],
     "produces": ["application/json"],
     "paths": {
