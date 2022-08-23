@@ -1,0 +1,127 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Blue Sky Analytics",
+      "description": "GHG Data Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/",
+    "tags": [
+      {
+        "name": "Countries",
+        "description": "API for countries in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/countries": {
+          "get": {
+            "tags": ["Countries"],
+            "summary": "Get all countries in system",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/definitions/Country"
+                }
+              }
+            }
+          }
+        },
+        "/country/{id}/?startYear=2013&endYear=2014&elements=CO2,SF6": {
+            "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "description": "ID of country that we want to fetch data for",
+                  "type": "integer"
+                },
+                {
+                    "name": "startYear",
+                    "in": "query",
+                    "required": true,
+                    "description": "value of start year",
+                    "type": "string"
+                },
+                {
+                    "name": "endYear",
+                    "in": "query",
+                    "required": false,
+                    "description": "value of end year",
+                    "type": "string"
+                },
+                {
+                    "name": "elements",
+                    "in": "query",
+                    "required": false,
+                    "description": "comma separated one or more values",
+                    "type": "string"
+                }
+              ],
+            "get": {
+              "tags": ["Country"],
+              "summary": "Get a country",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/Country"
+                  }
+                }
+              }
+            }
+          }
+        
+      },
+      
+        
+
+  "definitions": {
+    "Country": {
+      "properties": {
+        "countryId": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "country": {
+          "type": "string"
+        },
+        "years": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "string"
+              },
+              "elements": {
+                "type": "array",
+                "items":{
+                    "type":"object",
+                    "properties":{
+                        "name":{"type":"string"},
+                        "value":{"type":"string"}
+                    }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Countries": {
+      "type": "array",
+      "$ref": "#/definitions/Country"
+    }
+    }
+  }
+
+  
