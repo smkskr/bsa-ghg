@@ -9,7 +9,7 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "https://bsa-ghg.herokuapp.com/",
+    "host": "https://bsa-ghg.herokuapp.com",
     "basePath": "/api/",
     "tags": [
       {
